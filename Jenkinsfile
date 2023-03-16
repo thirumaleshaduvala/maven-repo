@@ -12,5 +12,11 @@ pipeline {
       }
     }
 
+    stage('build') {
+      steps {
+        sh '/usr/share/maven/bin/mav package'
+      }
+    }
+
   }
 }
