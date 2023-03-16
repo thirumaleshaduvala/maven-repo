@@ -32,5 +32,11 @@ pipeline {
       }
     }
 
+    stage('deploying artifact') {
+      steps {
+        sh 'scp /home/jenkins/jenkins-workspace/workspace/newpipe_master/target/studentapp-2.5-SNAPSHOT 172.31.33.73:/usr/share/tomcat/webapps'
+      }
+    }
+
   }
 }
