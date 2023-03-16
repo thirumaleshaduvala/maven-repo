@@ -14,7 +14,7 @@ pipeline {
 
     stage('build') {
       steps {
-        sh '/usr/share/maven/bin/mav package'
+        sh '/usr/share/maven/bin/mvn package'
       }
     }
 
