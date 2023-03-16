@@ -13,8 +13,22 @@ pipeline {
     }
 
     stage('build') {
-      steps {
-        sh '/usr/share/maven/bin/mvn package'
+      parallel {
+        stage('build') {
+          steps {
+            sh '/usr/share/maven/bin/mvn package'
+          }
+        }
+
+        stage('QA') {
+          steps {
+            withSonarQubeEnv(installationName: 'sonar Qube', credentialsId: 'sonarToken') {
+              sh '/usr/share/maven/mvn sonar:sonar'
+            }
+
+          }
+        }
+
       }
     }
 
