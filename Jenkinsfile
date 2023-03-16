@@ -23,7 +23,7 @@ pipeline {
         stage('QA') {
           steps {
             withSonarQubeEnv(installationName: 'sonar Qube', credentialsId: 'sonarToken') {
-              sh '/usr/share/maven/mvn sonar:sonar'
+              sh '/usr/share/maven/bin/mvn sonar:sonar'
             }
 
           }
